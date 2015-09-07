@@ -1,22 +1,12 @@
 require 'airborne'
+require_relative '../support/models/flight'
 
 url = 'http://localhost:3000/api/flights'
 
 describe 'POST' do
   it 'should create a new flight' do
     post url, 
-	{
-		id:2,
-	    data_partida: "01-10-2016",
-	    data_chegada: "12-10-2016",
-	    numero:"2222",
-	    origem:"Recife",
-	    destino:"Porto Alegre",
-	    duracao:6,
-	    lugares:10,
-	    companhia:"Azul"
-
-	}
+    Flight.build_flight
 	expect_status 200
 	expect(json_body[:companhia]).to eq("Azul")
   end
