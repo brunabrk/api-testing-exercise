@@ -1,6 +1,5 @@
 require 'airborne'
 
-
 url = 'http://localhost:3000/api/flights'
 
 describe 'POST' do
@@ -25,7 +24,7 @@ end
 
 describe 'PUT' do
 	it 'should update a flight' do
-	  	put url + '/7',
+	  	put url + '/2',
 	  	{
 	  		lugares:40,	
 	  	}
