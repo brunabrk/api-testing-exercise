@@ -14,7 +14,8 @@ end
 
 describe 'PUT' do
 	it 'should update a flight' do
-	  	put url + '/2',
+		post url, Flight.build_flight({:id => 4})
+	  	put url + '/4',
 	  	{
 	  		lugares:40,	
 	  	}
@@ -30,7 +31,8 @@ describe 'GET' do
   end
 
   it 'should return a specific flight' do
-  	get url + '/2'
+  	post url, Flight.build_flight({:id => 5})
+  	get url + '/5'
   	expect_status 200
   	expect(json_body[:origem]).to eq("Recife")
   end
@@ -38,6 +40,7 @@ end
 
 describe 'DELETE' do
 	it 'should delete a flight' do
+		#post url, Flight.build_flight({:id => 3})
 		delete url + '/2'
 		expect_status 204
 	end

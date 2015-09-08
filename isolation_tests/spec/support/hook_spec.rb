@@ -1,15 +1,18 @@
-require "rspec/expectations"
+require 'airborne'
 
-RSpec.configure do |config|
+describe "around filter" do
 
-	config.after(:each) do
-	    puts "after each"
-	end
+ url = 'http://localhost:3000/api/flights/'
+  after(:each) do
+    flights = JSON.parse(get url)
 
-	describe "after each scenario" do
-	  
+    flights.each do |flight|
+    	delete url + "#{flight['id']}"
+    end
 
-	  example "after callback" do
-	  end
-	end
+  end
+
+  it "gets run in order" do
+    puts "Removing data"
+  end
 end
